@@ -6,8 +6,9 @@
 package prac3;
 
 import java.awt.Color;
-import static java.awt.Color.BLACK;
 import java.awt.Point;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,6 +51,14 @@ public class ventana extends javax.swing.JFrame {
         lienzo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lienzo1MouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lienzo1MouseMoved(evt);
+            }
+        });
+        lienzo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lienzo1MouseReleased(evt);
             }
         });
 
@@ -134,9 +143,8 @@ public class ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lienzo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzo1MouseDragged
-        // TODO add your handling code here:
-        lienzo1.pinta(new Point(evt.getX(),evt.getY()),5);
-        lienzo1.repaint();
+        
+       
     }//GEN-LAST:event_lienzo1MouseDragged
 
     private void barraGrosorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_barraGrosorStateChanged
@@ -156,6 +164,21 @@ public class ventana extends javax.swing.JFrame {
         lienzo1.setColorFondo(colores[comboFondo.getSelectedIndex()]);
         lienzo1.repaint();
     }//GEN-LAST:event_comboFondoItemStateChanged
+
+    private void lienzo1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzo1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lienzo1MouseReleased
+
+    private void lienzo1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzo1MouseMoved
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            lienzo1.pinta(new Point(evt.getX(),evt.getY()),barraGrosor.getValue());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lienzo1.repaint();
+    }//GEN-LAST:event_lienzo1MouseMoved
 
     /**
      * @param args the command line arguments
