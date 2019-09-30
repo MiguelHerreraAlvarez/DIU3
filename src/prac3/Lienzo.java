@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author Asus
  */
 public class Lienzo extends JPanel{
-    private float grosor;
+    private int grosor;
     ArrayList<Point2D> myPoints = new ArrayList<>();
     
     public Lienzo(){
@@ -35,29 +35,22 @@ public class Lienzo extends JPanel{
         for (int i=0; i< myPoints.size();i++){
             g2d.fillOval((int)myPoints.get(i).getX(),
                     (int)myPoints.get(i).getY(),
-                    (int)grosor,(int)grosor);
+                    grosor,grosor);
         }
     }
     
     public void pinta(Point punto, int valor) throws InterruptedException{
         myPoints.add(punto);
-        if(valor < 50){
-            sleep(valor + 15);
-        }else{
-            sleep(70 + valor/5);
-        }
-        
         if(myPoints.size() > 5) myPoints.remove(0);
-        
     }
     
-    public void setColorFondo(Color colorFondo){
-        this.setBackground(colorFondo);
+    public void setColorFondo(Color color){
+        this.setBackground(color);
     }
-    public void setColorPincel(Color colorPincel){
-        this.setForeground(colorPincel);
+    public void setColorPincel(Color color){
+        this.setForeground(color);
     }
-    public void setGrosor(float nGrosor){
+    public void setGrosor(int nGrosor){
         grosor = nGrosor;
     }
 }
