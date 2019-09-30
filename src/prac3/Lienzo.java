@@ -19,13 +19,12 @@ import javax.swing.JPanel;
  * @author Asus
  */
 public class Lienzo extends JPanel{
-    private Color colorFondo;
-    private Color colorPincel;
     private float grosor;
     ArrayList<Point2D> myPoints = new ArrayList<>();
+    
     public Lienzo(){
-        colorFondo = Color.WHITE;
-        colorPincel = Color.BLACK;
+        setBackground(Color.WHITE);
+        setForeground(Color.BLACK);
     }
     
     @Override 
@@ -33,18 +32,11 @@ public class Lienzo extends JPanel{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         
-        this.setBackground(colorFondo);
-        this.setForeground(colorPincel);
-        
-        int px[] = new int [myPoints.size()];
-        int py[] = new int [myPoints.size()];
-        
         for (int i=0; i< myPoints.size();i++){
-            px[i] = (int)myPoints.get(i).getX();
-            py[i] = (int)myPoints.get(i).getY();
-            g2d.fillOval(px[i],py[i],(int)grosor,(int)grosor);
+            g2d.fillOval((int)myPoints.get(i).getX(),
+                    (int)myPoints.get(i).getY(),
+                    (int)grosor,(int)grosor);
         }
-        //g2d.drawOval(px,py,grosor,grosor);
     }
     
     public void pinta(Point punto, int valor) throws InterruptedException{
@@ -59,18 +51,13 @@ public class Lienzo extends JPanel{
         
     }
     
-    public void setColorFondo(Color color){
-        colorFondo = color;
+    public void setColorFondo(Color colorFondo){
+        this.setBackground(colorFondo);
     }
-    public void setColorPincel(Color color){
-        colorPincel = color;
+    public void setColorPincel(Color colorPincel){
+        this.setForeground(colorPincel);
     }
     public void setGrosor(float nGrosor){
         grosor = nGrosor;
-        
-    }
-    public void blank(){
-        myPoints.removeAll(myPoints);
-        repaint();
     }
 }

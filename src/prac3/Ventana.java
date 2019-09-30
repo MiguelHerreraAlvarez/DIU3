@@ -26,6 +26,8 @@ public class Ventana extends javax.swing.JFrame {
         colores[1]= Color.WHITE;
         colores[2]= Color.RED;
         colores[3]= Color.BLUE;
+        barraGrosor.setMinimum(2);
+        barraGrosor.setMaximum(70);
         
     }
 
